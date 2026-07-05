@@ -3,6 +3,7 @@
 **Write once. Run on any cloud.** A .NET library for building applications against one consistent, in-process surface — storage, secrets, queues and more — where the cloud provider behind each abstraction is a configuration choice, not a code change. No sidecar, no runtime.
 
 ![Status](https://img.shields.io/badge/status-design%20phase%20%C2%B7%20pre--release-orange)
+![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
 
 <!-- Add these once CI runs and the first package is published:
 [![Build](https://img.shields.io/github/actions/workflow/status/totaliadev/totalia/ci.yml?branch=main)](https://github.com/totaliadev/totalia/actions)
@@ -68,6 +69,16 @@ These are the constraints that keep Totalia from becoming the leaky, lowest-comm
 - **No sidecar, no runtime.** Totalia is a plain library. If you can `dotnet add package`, you can use it.
 - **DI-native, async-first, local-first.** One entry point, the options pattern throughout, `Task`-based APIs with `CancellationToken`, and an in-memory implementation for every abstraction.
 
+## How Totalia relates to other projects
+
+It's worth being honest about the neighbours:
+
+- **[Dapr](https://dapr.io)** offers building-block abstractions across providers, but runs as a **sidecar** — a separate process with its own operational footprint. Totalia is a plain in-process library with nothing to operate.
+- **[FluentStorage](https://github.com/robinrodricks/FluentStorage)** is an excellent, battle-tested library for blob storage and messaging. Totalia's aim is broader: one consistent model across more service types than storage and queues alone.
+- **[.NET Aspire](https://github.com/dotnet/aspire)** solves local orchestration and developer experience and deliberately does *not* abstract providers. Totalia is complementary — you can run a Totalia-based app under Aspire and get both.
+
+If one of the above fully meets your needs, use it. Totalia is for teams who want a single, cohesive, sidecar-free surface across several cloud services in .NET.
+
 ## Project status
 
 Design and roadmap are in place. The v0.1 core (the shared "spine") and the storage and secrets modules are being built. Nothing is published to NuGet yet, and the public API may change freely until 1.0. Follow the [roadmap](ROADMAP.md) for what's next.
@@ -82,4 +93,4 @@ Totalia (*toh-TAH-lee-uh*) — for **total** coverage across your cloud stack, a
 
 ## License
 
-[MIT](LICENSE) — free for commercial and open-source use alike.
+[Apache-2.0](LICENSE) — free for commercial and open-source use alike, with an explicit patent grant for contributors and users.
